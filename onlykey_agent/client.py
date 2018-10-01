@@ -121,7 +121,23 @@ class Client(object):
         b1, b2, b3 = get_button(d[0]), get_button(d[15]), get_button(d[31])
 
         log.info('blob to send', repr(test_payload))
-        self.ok.send_large_message2(msg=Message.OKSIGNCHALLENGE, payload=test_payload, slot_id=132)
+
+        # Determine type of key to derive on OnlyKey for signature
+        # 201 = ed25519
+        # 202 = P256
+        # 203 = secp256k1
+        keytype = msg['key_type']
+        if msg['key_type'].startswith('ssh-ed25519'):
+            this_slot_id = 201
+            log.info('Key type ed25519')
+        elif msg['key_type'].startswith('ecdsa-sha2-nistp256'):
+            this_slot_id = 202
+            log.info('Key type P256')
+        else:
+            this_slot_id = 203
+            log.info('Key type secp256k1')
+
+        self.ok.send_large_message2(msg=Message.OKSIGNCHALLENGE, payload=test_payload, slot_id=this_slot_id)
 
         print 'Please confirm user', msg['user'], 'login to', label, 'using', self.device_name
         print('Enter the 3 digit challenge code shown below on OnlyKey to authenticate')

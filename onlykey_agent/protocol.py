@@ -102,8 +102,8 @@ class Handler(object):
         log.debug('calling %s()', method.__name__)
         reply = method(buf=buf)
         debug_reply = ': {!r}'.format(reply) if self.debug else ''
-        log.debug('reply: %d bytes%s', len(reply), debug_reply)
-        log.info('reply: ', repr(reply))
+        #log.debug('reply: %d bytes %s', len(reply), debug_reply)
+        # log.info('reply: ', repr(reply))
         return reply
 
     def list_pubs(self, buf):

@@ -36,28 +36,24 @@ $ onlykey-agent user@example.com git push
 ## Installation
 
 ### MacOS Install with dependencies
-Brew is required. To install visit https://brew.sh/
+Python2 and pip are required. To setup a Python environment on MacOS we recommend Anaconda https://www.anaconda.com/download/#macos
+
 ```
-$ brew update && brew upgrade
-$ brew install python
-$ pip2 install git+git://github.com/trustcrypto/python-onlykey.git
-$ pip2 install git+git://github.com/trustcrypto/onlykey-agent.git
+$ pip install onlykey onlykey-agent
 ```
 
 ### Ubuntu Install with dependencies
 ```
 $ apt update && apt upgrade
 $ apt install python-pip python-dev libusb-1.0-0-dev libudev-dev
-$ pip2 install git+git://github.com/trustcrypto/python-onlykey.git
-$ pip2 install git+git://github.com/trustcrypto/onlykey-agent.git
+$ pip install onlykey onlykey-agent
 ```
 
 ### Debian Install with dependencies
 ```
 $ apt update && apt upgrade
 $ apt install python-pip python-dev libusb-1.0-0-dev libudev-dev
-$ pip2 install git+git://github.com/trustcrypto/python-onlykey.git
-$ pip2 install git+git://github.com/trustcrypto/onlykey-agent.git
+$ pip install onlykey onlykey-agent
 ```
 
 ### Fedora/RedHat/CentOS Install with dependencies
@@ -65,19 +61,24 @@ $ pip2 install git+git://github.com/trustcrypto/onlykey-agent.git
 $ yum update
 $ yum install python-pip python-devel libusb-devel libudev-devel \
               gcc redhat-rpm-config
-$ pip2 install git+git://github.com/trustcrypto/python-onlykey.git
-$ pip2 install git+git://github.com/trustcrypto/onlykey-agent.git
+$ pip install onlykey onlykey-agent
 ```
 ### OpenSUSE Install with dependencies
 ```
 $ zypper install python-pip python-devel libusb-1_0-devel libudev-devel
-$ pip2 install git+git://github.com/trustcrypto/python-onlykey.git
-$ pip2 install git+git://github.com/trustcrypto/onlykey-agent.git
+$ pip install onlykey onlykey-agent
+```
+
+### Arch Linux Install with dependencies
+
+```
+$ sudo pacman -Sy git python2-setuptools python2 libusb python2-pip
+$ pip install onlykey
 ```
 
 ### Linux UDEV Rule
 
-In order for non-root users in Linux to be able to communicate with OnlyKey a udev rule must be created as described [here](https://www.pjrc.com/teensy/td_download.html).
+In order for non-root users in Linux to be able to communicate with OnlyKey a udev rule must be created as described [here](https://docs.crp.to/linux).
 
 ## Advanced Options
 
@@ -97,4 +98,4 @@ $ onlykey-agent -c user@example.com -e ed25519
 
 You can also just type `-e e` instead of typing out the full `-e ed25519`
 
-The project started from a fork [trezor-agent](https://github.com/romanz/trezor-agent) (thanks!). 
+The project started from a fork [trezor-agent](https://github.com/romanz/trezor-agent) (thanks!).
