@@ -8,8 +8,8 @@ SSH is a popular remote access tool that is often used by administrators. Thanks
 
 1) Install OnlyKey agent on your client machine:
 ```
-$ sudo pip2 install onlykey
-$ sudo pip2 install onlykey-agent
+$ sudo pip install onlykey
+$ sudo pip install onlykey-agent
 ```
 
 2) Generate public key using onlykey-agent
@@ -35,6 +35,10 @@ $ onlykey-agent user@example.com git push
 
 ## Installation
 
+### Linux UDEV Rule
+
+In order for non-root users in Linux to be able to communicate with OnlyKey a udev rule must be created as described [here](https://docs.crp.to/linux.html).
+
 ### MacOS Install with dependencies
 Python2 and pip are required. To setup a Python environment on MacOS we recommend Anaconda https://www.anaconda.com/download/#macos
 
@@ -47,6 +51,8 @@ $ pip install onlykey onlykey-agent
 $ apt update && apt upgrade
 $ apt install python-pip python-dev libusb-1.0-0-dev libudev-dev
 $ pip install onlykey onlykey-agent
+$ pip install onlykey
+$ pip install onlykey-agent
 ```
 
 ### Debian Install with dependencies
