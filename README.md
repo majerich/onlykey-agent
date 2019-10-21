@@ -51,8 +51,6 @@ $ pip install onlykey onlykey-agent
 $ apt update && apt upgrade
 $ apt install python-pip python-dev libusb-1.0-0-dev libudev-dev
 $ pip install onlykey onlykey-agent
-$ pip install onlykey
-$ pip install onlykey-agent
 ```
 
 ### Debian Install with dependencies
