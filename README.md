@@ -6,7 +6,7 @@ SSH is a popular remote access tool that is often used by administrators. Thanks
 
 ## SSH Agent Quickstart Guide
 
-1) Install OnlyKey agent on your client machine:
+1) After installing [prerequisites](#install), install OnlyKey agent on your client machine:
 ```
 $ sudo pip install onlykey
 $ sudo pip install onlykey-agent
@@ -33,7 +33,7 @@ $ onlykey-agent -c user@example.com
 $ onlykey-agent user@example.com git push
 ```
 
-## Installation
+## Installation {#install}
 
 ### Linux UDEV Rule
 
