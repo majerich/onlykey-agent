@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='onlykey_agent',
-    version='0.0.5',
+    version='1.0.0',
     description='Using OnlyKey as hardware SSH agent',
     author='CryptoTrust',
     author_email='admin@crp.to',
@@ -13,7 +13,7 @@ setup(
     platforms=['POSIX'],
     classifiers=[
         'Environment :: Console',
-        'Development Status :: 5 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Intended Audience :: Information Technology',
         'Intended Audience :: System Administrators',
