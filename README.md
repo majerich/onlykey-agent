@@ -43,7 +43,7 @@ Note: This method can also be used for git push or other mechanisms that are usi
 $ onlykey-agent user@host git push
 ```
 
-## Installation {#install}
+## Installation 
 
 ### Windows Install with dependencies
 Currently Windows is not supported directly but may be used with Windows Subsystem for Linux (WSL). Follow the [WSL guide here](https://docs.microsoft.com/en-us/windows/wsl/install-win10) to set this up. This essentially installs Linux on Windows, for example you can install Ubuntu Linux on Windows and then follow the instructions below "Ubuntu Install with dependencies".
