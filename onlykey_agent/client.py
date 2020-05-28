@@ -114,9 +114,7 @@ class Client(object):
 
         def get_button(byte):
             ibyte = ord(byte)
-            if ibyte < 6:
-                return 1
-            return ibyte % 5 + 1
+            return ibyte % 6 + 1
 
         b1, b2, b3 = get_button(d[0]), get_button(d[15]), get_button(d[31])
 
@@ -138,6 +136,8 @@ class Client(object):
             log.info('Key type secp256k1')
 
         self.ok.send_large_message2(msg=Message.OKSIGNCHALLENGE, payload=test_payload, slot_id=this_slot_id)
+
+        #TODO ping messages so that we don't need enter key to tell when done.
 
         print 'Please confirm user', msg['user'], 'login to', label, 'using', self.device_name
         print('Enter the 3 digit challenge code shown below on OnlyKey to authenticate')
