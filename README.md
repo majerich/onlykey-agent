@@ -7,79 +7,50 @@ SSH is a popular remote access tool that is often used by administrators. Thanks
 ## SSH Agent Quickstart Guide
 
 1) After installing [prerequisites](#install), install OnlyKey agent on your client machine:
-
 ```
-$ sudo pip2 install onlykey onlykey-agent
-```
-
-2) Generate your First SSH Key on the OnlyKey
-Plug and unlock your OnlyKey and then run:
-
-```
-$ onlykey-agent identity@myhost
+$ sudo pip install onlykey
+$ sudo pip install onlykey-agent
 ```
 
-Where identity is your usual SSH user and myhost the host you want to connect to.
+2) Generate public key using onlykey-agent
+```
+$ onlykey-agent user@example.com
+```
 
-3) You now have the SSH public key for the user and the host you previously selected.
+3) Log in to your server as usual and copy the row containing the output from the previous step into ~/.ssh/authorized_keys file on your server
 
 i.e.
 
-`ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFwsFGFI7px8toa38FVeBIKcYdBvWzYXAiVcbB2d1o3zEsRB6Lm/ZuCzQjaLwQdcpT1aF8tycqt4K6AGI1o+qFk= identity@myhost`
-
-Cut and paste the whole string into your server ~/.ssh/authorized_keys file, you're now ready to use SSH with your newly generated key.
+`ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFwsFGFI7px8toa38FVeBIKcYdBvWzYXAiVcbB2d1o3zEsRB6Lm/ZuCzQjaLwQdcpT1aF8tycqt4K6AGI1o+qFk= user@example.com`
 
 4) From now on you can log in to your server using OnlyKey using the following command:
-
 ```
-$ onlykey-agent identity@myhost -c
-```
-
-You will be prompted for a challenge code, type this on your OnlyKey to complete log in.
-
-Note: This method can also be used for git push, scp, or other mechanisms that are using SSH as their communication protocol:
-
-```
-$ onlykey-agent identity@myhost -- COMMAND --WITH --ARGUMENTS
+$ onlykey-agent -c user@example.com
 ```
 
-### Use the derived key for subversion commits
+5) This method can also be used for git push or other mechanisms that are using SSH as their communication protocol:
 ```
-$ onlykey-agent identity@myhost -- svn commit -m "commit message"
-```
-
-### Use the key for git clone/pull/fetch/push
-```
-$ onlykey-agent identity@myhost -- git push
+$ onlykey-agent user@example.com git push
 ```
 
-### For rsyncing
-```
-$ onlykey-agent identity@myhost -- rsync -a /path   someuser@somehost:/remote/path
-```
+## Installation {#install}
 
-### Copy a file to an SSH server running in Termux running on an android device
-```
-$ onlykey-agent identity@myhost -- scp -P 8022 /path/somefile.txt 192.168.56.195:/sdcard/
-```
+### Linux UDEV Rule
 
-## Installation
-
-### Windows Install with dependencies
-Currently Windows is not supported directly but may be used with Windows Subsystem for Linux (WSL). Follow the [WSL guide here](https://docs.microsoft.com/en-us/windows/wsl/install-win10) to set this up. This essentially installs Linux on Windows, for example you can install Ubuntu Linux on Windows and then follow the instructions below "Ubuntu Install with dependencies".
+In order for non-root users in Linux to be able to communicate with OnlyKey a udev rule must be created as described [here](https://docs.crp.to/linux.html).
 
 ### MacOS Install with dependencies
-Python 2.7 and pip are required. To setup a Python environment on MacOS we recommend Anaconda https://www.anaconda.com/download/#macos
+Python2 and pip are required. To setup a Python environment on MacOS we recommend Anaconda https://www.anaconda.com/download/#macos
+
 ```
-$ pip2 install onlykey onlykey-agent
+$ pip install onlykey onlykey-agent
 ```
 
 ### Ubuntu Install with dependencies
 ```
 $ apt update && apt upgrade
 $ apt install python-pip python-dev libusb-1.0-0-dev libudev-dev
-$ pip install onlykey
-$ pip install onlykey-agent
+$ pip install onlykey onlykey-agent
 ```
 
 ### Debian Install with dependencies
@@ -102,9 +73,16 @@ $ zypper install python-pip python-devel libusb-1_0-devel libudev-devel
 $ pip install onlykey onlykey-agent
 ```
 
+### Arch Linux Install with dependencies
+
+```
+$ sudo pacman -Sy git python2-setuptools python2 libusb python2-pip
+$ pip install onlykey
+```
+
 ### Linux UDEV Rule
 
-In order for non-root users in Linux to be able to communicate with OnlyKey a udev rule must be created as described [here](https://docs.crp.to/linux.html).
+In order for non-root users in Linux to be able to communicate with OnlyKey a udev rule must be created as described [here](https://docs.crp.to/linux).
 
 ## Advanced Options
 
@@ -114,12 +92,12 @@ Keys are generated unique for each user / host combination. By default OnlyKey a
 
 1) Generate ED25519 public key using onlykey-agent
 ```
-$ onlykey-agent user@host -e ed25519
+$ onlykey-agent user@example.com -e ed25519
 ```
 
 2) Log in using ED25519 public key
 ```
-$ onlykey-agent -c user@host -e ed25519
+$ onlykey-agent -c user@example.com -e ed25519
 ```
 
 You can also just type `-e e` instead of typing out the full `-e ed25519`
