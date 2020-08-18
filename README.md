@@ -70,7 +70,7 @@ $ onlykey-agent identity@myhost -- scp -P 8022 /path/somefile.txt 192.168.56.195
 Currently Windows is not supported directly but may be used with Windows Subsystem for Linux (WSL). Follow the [WSL guide here](https://docs.microsoft.com/en-us/windows/wsl/install-win10) to set this up. This essentially installs Linux on Windows, for example you can install Ubuntu Linux on Windows and then follow the instructions below "Ubuntu Install with dependencies".
 
 ### MacOS Install with dependencies
-Python 3.8 and pip3 are required. To setup a Python environment on MacOS we recommend Anaconda https://www.anaconda.com/download/#macos
+Python 3.8 and pip3 are required. To setup a Python environment on MacOS we recommend Anaconda [https://www.anaconda.com/download/#macos](https://www.anaconda.com/download/#macos)
 ```
 $ brew install libusb
 $ pip3 install onlykey-agent
