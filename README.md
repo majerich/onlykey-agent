@@ -9,7 +9,7 @@ SSH is a popular remote access tool that is often used by administrators. Thanks
 1) After installing [prerequisites](#installation), install OnlyKey agent on your client machine:
 
 ```
-$ sudo pip install onlykey onlykey-agent
+$ pip3 install onlykey-agent
 ```
 
 2) Generate your First SSH Key on the OnlyKey
